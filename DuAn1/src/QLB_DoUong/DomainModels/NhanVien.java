@@ -135,6 +135,6 @@ public class NhanVien {
     }
 
     public Object[] toData() {
-        return new Object[]{id, maNhanVien, tenNhanVien, email, gioiTinh == 1 ? "Nam" : "Nữ", ngaySinh, diaChi, sdt, trangThai == 1 ? "Đang làm việc" : "Nghỉ việc", matKhau, chucVu==1?"Quản lý":"Nhân Viên"};
+        return new Object[]{id, maNhanVien, tenNhanVien, email, gioiTinh == 1 ? "Nam" : "Nữ", ngaySinh, diaChi, sdt, trangThai == 1 ? "Đang làm việc" : "Nghỉ việc", matKhau, chucVu==1?"Nhân Viên": "Quản Lý"};
     }
 }

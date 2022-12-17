@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/DELL/Documents/PRO1041-DuAn1-FPT/DuAn1/src/QLB_DoUong/Views/ViewGiaoDienBanHang.java</file>
-            <file>file:/C:/Users/DELL/Documents/PRO1041-DuAn1-FPT/DuAn1/src/QLB_DoUong/Repositories/BanHangRepository.java</file>
-            <file>file:/C:/Users/DELL/Documents/PRO1041-DuAn1-FPT/DuAn1/src/QLB_DoUong/Services/BanHangService.java</file>
-            <file>file:/C:/Users/DELL/Documents/PRO1041-DuAn1-FPT/DuAn1/src/QLB_DoUong/Services/Impl/BanHangServiceImpl.java</file>
-            <file>file:/C:/Users/DELL/Documents/PRO1041-DuAn1-FPT/DuAn1/src/QLB_DoUong/Views/FormBanHang.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Repositories/NhanVienRepository.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Views/ViewGiaoDienBanHang.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Services/NhanVienService.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Services/Impl/NhanVienServiceImpl.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Views/FormBanHang.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Views/FormQuanLyNhanVien.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/DomainModels/NhanVien.java</file>
+            <file>file:/C:/Users/0978078602/Documents/DuAn1---Fpoly/DuAn1/src/QLB_DoUong/Utilities/DBConnection.java</file>
         </group>
     </open-files>
 </project-private>
