@@ -16,8 +16,8 @@ public class DBConnection {
     public static final String HOSTNAME = "localhost";
     public static final String PORT = "1433";
     public static final String DBNAME = "PHAN_MEM_QUAN_LI_BAN_DO_UONG";
-    public static final String USERNAME = "truongnnph28060";
-    public static final String PASSWORD = "123456";
+    public static final String USERNAME = "duan1";
+    public static final String PASSWORD = "123";
 
     /**
      * Get connection to MSSQL Server
