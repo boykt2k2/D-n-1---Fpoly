@@ -30,7 +30,7 @@ public class FromThongKe extends javax.swing.JPanel {
     public FromThongKe() {
         initComponents();
           loadData1(TKService.getList());
-        sumhd(TKService.Sumhoadon());
+//        sumhd(TKService.Sumhoadon());
         checkYear();
 
         Refresh();
@@ -64,11 +64,11 @@ private void sumhd1(ArrayList<Double> list) {
             lbldoanhthu1.setText(String.valueOf(double1) + " " + "VND");
         }
     }
-    private void sumhd(ArrayList<Double> list) {
-        for (Double double1 : list) {
-            lblTongDoanhThu.setText(String.valueOf(double1) + " " + "VND");
-        }
-    }
+//    private void sumhd(ArrayList<Double> list) {
+//        for (Double double1 : list) {
+//            lblTongDoanhThu.setText(String.valueOf(double1) + " " + "VND");
+//        }
+//    }
 
     private void sumhdnam(ArrayList<Double> list) {
         for (Double double1 : list) {
@@ -155,6 +155,7 @@ private void sumhd1(ArrayList<Double> list) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -172,8 +173,6 @@ private void sumhd1(ArrayList<Double> list) {
         datengaykt = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         lblSoHoaDon = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        lblTongDoanhThu = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -186,7 +185,6 @@ private void sumhd1(ArrayList<Double> list) {
         jLabel11 = new javax.swing.JLabel();
         lblthang = new javax.swing.JLabel();
         lblsosp1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         btnFind = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -199,7 +197,7 @@ private void sumhd1(ArrayList<Double> list) {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1190, 700));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Tổng hợp thống kê");
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -249,6 +247,7 @@ private void sumhd1(ArrayList<Double> list) {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        buttonGroup1.add(radXemngay);
         radXemngay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radXemngay.setText("Xem theo ngày");
         radXemngay.addItemListener(new java.awt.event.ItemListener() {
@@ -257,6 +256,7 @@ private void sumhd1(ArrayList<Double> list) {
             }
         });
 
+        buttonGroup1.add(radXemthang);
         radXemthang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radXemthang.setText("Xem theo tháng");
         radXemthang.addItemListener(new java.awt.event.ItemListener() {
@@ -265,6 +265,7 @@ private void sumhd1(ArrayList<Double> list) {
             }
         });
 
+        buttonGroup1.add(radXemnam);
         radXemnam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radXemnam.setText("Xem theo năm");
         radXemnam.addItemListener(new java.awt.event.ItemListener() {
@@ -352,12 +353,6 @@ private void sumhd1(ArrayList<Double> list) {
 
         lblSoHoaDon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSoHoaDon.setText("0");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("Tổng Tiền Thu Về:");
-
-        lblTongDoanhThu.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblTongDoanhThu.setText("0 VND");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -457,14 +452,8 @@ private void sumhd1(ArrayList<Double> list) {
                 .addContainerGap())
         );
 
-        jButton1.setText("Pie Chart");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        btnFind.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnFind.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/search.png"))); // NOI18N
         btnFind.setText("Tìm kiếm");
         btnFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,6 +461,7 @@ private void sumhd1(ArrayList<Double> list) {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/quayLai.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -540,33 +530,24 @@ private void sumhd1(ArrayList<Double> list) {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(411, 411, 411)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(lblTongDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblSoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(158, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(158, 158, 158))
+                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(240, 240, 240))))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -579,31 +560,24 @@ private void sumhd1(ArrayList<Double> list) {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(btnFind, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFind, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lblSoHoaDon)
-                    .addComponent(jLabel4)
-                    .addComponent(lblTongDoanhThu))
-                .addContainerGap())
+                    .addComponent(lblSoHoaDon))
+                .addGap(40, 40, 40))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(159, 159, 159)
@@ -617,8 +591,8 @@ private void sumhd1(ArrayList<Double> list) {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,22 +632,6 @@ private void sumhd1(ArrayList<Double> list) {
         //            return;
     }//GEN-LAST:event_cbxMonthPopupMenuWillBecomeInvisible
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-//        dataset.setValue(100, "abc", "xyz1");
-//        dataset.setValue(70, "abc", "xyz2");
-//        dataset.setValue(50, "abc", "xyz3");
-//        dataset.setValue(90, "abc", "xyz4");
-//        JFreeChart Chart = ChartFactory.createBarChart("Thông kê doanh thu", "Tháng", "số hóa đơn", dataset, PlotOrientation.VERTICAL, false, true, false);
-//        CategoryPlot p = Chart.getCategoryPlot();
-//        p.setRangeGridlinePaint(Color.black);
-//        ChartFrame frame = new ChartFrame("aloaloalaolao", Chart);
-//        frame.setVisible(true);
-//        frame.setSize(450, 350);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
         if (radXemnam.isSelected()) {
             int nam = (int) cbxYear.getValue();
@@ -699,17 +657,17 @@ private void sumhd1(ArrayList<Double> list) {
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        loadData1(TKService.getList());
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFind;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxMonth;
     private javax.swing.JSpinner cbxYear;
     private com.toedter.calendar.JDateChooser datengaybd;
     private com.toedter.calendar.JDateChooser datengaykt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -719,7 +677,6 @@ private void sumhd1(ArrayList<Double> list) {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -733,7 +690,6 @@ private void sumhd1(ArrayList<Double> list) {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSoHoaDon;
-    private javax.swing.JLabel lblTongDoanhThu;
     private javax.swing.JLabel lbldoanhthu1;
     private javax.swing.JLabel lblsosp1;
     private javax.swing.JLabel lblsosp2;
