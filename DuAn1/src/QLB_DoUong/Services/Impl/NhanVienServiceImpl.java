@@ -6,7 +6,6 @@ package QLB_DoUong.Services.Impl;
 
 import QLB_DoUong.DomainModels.NhanVien;
 import QLB_DoUong.Repositories.NhanVienRepository;
-import QLB_DoUong.Services.NhanVienService;
 import java.util.List;
 
 /**
@@ -33,8 +32,8 @@ public class NhanVienServiceImpl implements NhanVienService {
     }
 
     @Override
-    public String update(NhanVien nhanVien, String maNV) {
-        boolean update = nhanVienRepository.update(nhanVien, maNV);
+    public String update(NhanVien nhanVien, String Id) {
+        boolean update = nhanVienRepository.update(nhanVien, Id);
         if (update) {
             return "Update thành công";
         } else {
@@ -65,6 +64,11 @@ public class NhanVienServiceImpl implements NhanVienService {
     @Override
     public List<NhanVien> searchGioiTinh(String gioiTinh) {
         return nhanVienRepository.searchGioiTinh(gioiTinh);
+    }
+
+    @Override
+    public String checkTrung(String maNV) {
+        return nhanVienRepository.checkTrung(maNV);
     }
 
 }

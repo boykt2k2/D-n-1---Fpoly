@@ -22,11 +22,12 @@ public class NhanVien {
     private String sdt;
     private int trangThai;
     private String matKhau;
+    private int chucVu;
 
     public NhanVien() {
     }
 
-    public NhanVien(String id, String maNhanVien, String tenNhanVien, String email, int gioiTinh, Date ngaySinh, String diaChi, String sdt, int trangThai, String matKhau) {
+    public NhanVien(String id, String maNhanVien, String tenNhanVien, String email, int gioiTinh, Date ngaySinh, String diaChi, String sdt, int trangThai, String matKhau, int chucVu) {
         this.id = id;
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
@@ -37,18 +38,7 @@ public class NhanVien {
         this.sdt = sdt;
         this.trangThai = trangThai;
         this.matKhau = matKhau;
-    }
-
-    public NhanVien(String maNhanVien, String tenNhanVien, String email, int gioiTinh, Date ngaySinh, String diaChi, String sdt, int trangThai, String matKhau) {
-        this.maNhanVien = maNhanVien;
-        this.tenNhanVien = tenNhanVien;
-        this.email = email;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.sdt = sdt;
-        this.trangThai = trangThai;
-        this.matKhau = matKhau;
+        this.chucVu = chucVu;
     }
 
     public String getId() {
@@ -131,12 +121,20 @@ public class NhanVien {
         this.matKhau = matKhau;
     }
 
+    public int getChucVu() {
+        return chucVu;
+    }
+
+    public void setChucVu(int chucVu) {
+        this.chucVu = chucVu;
+    }
+
     @Override
     public String toString() {
-        return "NhanVien{" + "id=" + id + ", maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", email=" + email + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", sdt=" + sdt + ", trangThai=" + trangThai + ", matKhau=" + matKhau + '}';
+        return "NhanVien{" + "id=" + id + ", maNhanVien=" + maNhanVien + ", tenNhanVien=" + tenNhanVien + ", email=" + email + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", sdt=" + sdt + ", trangThai=" + trangThai + ", matKhau=" + matKhau + ", chucVu=" + chucVu + '}';
     }
 
     public Object[] toData() {
-        return new Object[]{id, maNhanVien, tenNhanVien, email, gioiTinh == 1 ? "Nam" : "Nữ", ngaySinh, diaChi, sdt, trangThai == 1 ? "Đang làm việc" : "Nghỉ việc", matKhau};
+        return new Object[]{id, maNhanVien, tenNhanVien, email, gioiTinh == 1 ? "Nam" : "Nữ", ngaySinh, diaChi, sdt, trangThai == 1 ? "Đang làm việc" : "Nghỉ việc", matKhau, chucVu==1?"Quản lý":"Nhân Viên"};
     }
 }
