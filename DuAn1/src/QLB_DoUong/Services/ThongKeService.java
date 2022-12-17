@@ -4,7 +4,10 @@
  */
 package QLB_DoUong.Services;
 
+import QLB_DoUong.DomainModels.DoUong_HoaDon;
 import QLB_DoUong.DomainModels.Thongke;
+import QLB_DoUong.ViewModel.ThongkeVM;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +16,32 @@ import java.util.List;
  */
 public interface ThongKeService {
 
-    public List<Thongke> getList();
-    public List<Thongke> timKiem(String ma);
+    public ArrayList<ThongkeVM> getList();
+
+    public ArrayList<ThongkeVM> timKiemngay(int ngay, int thang, int nam);
+
+    public ArrayList<ThongkeVM> timKiemthang(int thang, int nam);
+
+    public ArrayList<Double> Sumhoadon();
+
+    public ArrayList<Double> Sumhoadonnam(int nam);
+
+    public ArrayList<Double> Sumhoadonthang(int nam, int thang);
+
+    public ArrayList<Integer> Sumspnam(int nam);
+
+    public ArrayList<Integer> Sumspngay(String ngaybd, String ngaykt);
+
+    public ArrayList<Integer> Sumspthang(int nam, int thang);
+
+    public ArrayList<ThongkeVM> timkiemnam(int nam);
+
+    public ArrayList<DoUong_HoaDon> getListHoaDonChiTiet();
+
+    public ArrayList<DoUong_HoaDon> timKiemDoUongHoaDon(String ma);
+
+    public ArrayList<ThongkeVM> timKiemtngay1(String ngaybd, String ngaykt);
+
+    public ArrayList<Double> Sumhoadon(String ngaybd, String ngaykt);
+
 }
