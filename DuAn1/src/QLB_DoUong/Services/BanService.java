@@ -12,10 +12,18 @@ import java.util.ArrayList;
  * @author DELL
  */
 public interface BanService {
-     public ArrayList<Ban> getlist();
+
+    public ArrayList<Ban> getlist();
+
     public Boolean Add(Ban ban);
-    public Boolean Delete(String id);
-    public Boolean Update(String id,Ban ban);
+
+    public Boolean Delete(String ma);
+
+    public Boolean Update(String ma, Ban ban);
+
     public ArrayList<Ban> timkiem(String ma);
+
     public Boolean check(String ma);
+
+
 }

@@ -29,13 +29,13 @@ public class BanServiceImpl implements BanService {
     }
 
     @Override
-    public Boolean Delete(String id) {
-        return banrp.xoa(id);
+    public Boolean Delete(String ma) {
+        return banrp.xoa(ma);
     }
 
     @Override
-    public Boolean Update(String id, Ban ban) {
-        return banrp.sua(id, ban);
+    public Boolean Update(String ma, Ban ban) {
+        return banrp.sua(ma, ban);
     }
 
     @Override

@@ -12,10 +12,18 @@ import java.util.ArrayList;
  * @author 84987
  */
 public interface DanhmucSevice {
+
     public ArrayList<DanhMuc> getlist();
+
     public Boolean Add(DanhMuc Danhmuc);
-    public Boolean Delete(String id);
-    public Boolean Update(String id,DanhMuc Danhmuc);
+
+    public Boolean Delete(String ma);
+
+    public Boolean Update(String ma, DanhMuc Danhmuc);
+
     public ArrayList<DanhMuc> timkiem(String ma);
+
     public Boolean check(String ma);
+
+
 }

@@ -26,5 +26,7 @@ public interface NhanVienService {
     List<NhanVien> searchDiaChi(String diaChi);
 
     List<NhanVien> searchGioiTinh(String gioiTinh);
+    
+    String checkTrung(String maNV);
 
 }

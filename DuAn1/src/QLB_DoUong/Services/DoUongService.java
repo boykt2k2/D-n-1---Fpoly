@@ -16,9 +16,20 @@ import java.util.List;
  * @author THUONG DINH
  */
 public interface DoUongService {
+
     public List<DoUongVM> getList();
+
     public boolean add(DoUongVM du);
+
     public boolean update(String ma, DoUongVM du);
+
     public boolean delete(String ma);
-    public List<DoUongVM> search(String kind,String txt);
+
+    public List<DoUongVM> search(String kind, String txt);
+
+    public Boolean check(String ma);
+
+    List<DoUongVM> getSearchTen(String ten);
+
+    List<DoUongVM> getSearchMa(String ma);
 }

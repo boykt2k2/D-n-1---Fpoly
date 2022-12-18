@@ -54,4 +54,9 @@ public class SizeServiceImpl implements SizeService {
         return sr.getById(ma);
     }
 
+    @Override
+    public Boolean check(String ma) {
+        return sr.check(ma);
+    }
+
 }

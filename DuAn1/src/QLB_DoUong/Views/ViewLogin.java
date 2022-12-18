@@ -4,8 +4,13 @@
  */
 package QLB_DoUong.Views;
 
+import QLB_DoUong.DomainModels.NhanVien;
+import QLB_DoUong.Services.Impl.LoginServiceImpl;
+import QLB_DoUong.Services.LoginService;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -13,7 +18,7 @@ import javax.swing.JPanel;
  * @author 0978078602
  */
 public class ViewLogin extends javax.swing.JFrame {
-
+private LoginService loginService = new LoginServiceImpl();
     /**
      * Creates new form ViewLogin
      */
@@ -30,6 +35,26 @@ public class ViewLogin extends javax.swing.JFrame {
      private void setColor2(JPanel panel) {
         panel.setBackground(new Color(255,255,255));
     }
+     public void loadData(ArrayList<NhanVien> list) {
+        for (NhanVien nhanvien : list) {
+            
+            if (nhanvien.getTrangThai() ==1){
+                if(nhanvien.getChucVu() ==1){
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+                new ViewGiaoDienBanHang(nhanvien.getChucVu(),nhanvien.getMaNhanVien(), nhanvien.getTenNhanVien()).setVisible(true);
+                this.dispose();
+                }
+                
+            } else if (nhanvien.getTrangThai() ==0) {
+                JOptionPane.showMessageDialog(this, "Bạn đã nghỉ việc");                 
+                return;
+            }
+
+        }
+
+    }
+     
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,12 +70,11 @@ public class ViewLogin extends javax.swing.JFrame {
         panel_dangNhap = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtuser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
+        txtpw = new javax.swing.JPasswordField();
 
         jButton2.setText("jButton2");
 
@@ -66,17 +90,19 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel1.setText("Đăng Nhập ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Tài khoản");
+        jLabel3.setText("Tài khoản:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Mật khẩu");
-
-        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel5.setText("Quên mật khẩu ?");
+        jLabel2.setText("Mật khẩu:");
 
         btnDangNhap.setBackground(new java.awt.Color(228, 245, 194));
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangNhapActionPerformed(evt);
+            }
+        });
 
         btnThoat.setBackground(new java.awt.Color(228, 245, 194));
         btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -95,14 +121,10 @@ public class ViewLogin extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(panel_dangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(txtuser, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2))))
+                            .addComponent(txtpw))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_dangNhapLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
             .addGroup(panel_dangNhapLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(btnDangNhap)
@@ -118,14 +140,12 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(txtpw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(panel_dangNhapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,6 +186,31 @@ public class ViewLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+       String usname = txtuser.getText();
+        String pwd = txtpw.getText();
+        
+        if (usname.equals("") || pwd.equals("")) {
+            JOptionPane.showMessageDialog(this, "Không được để trống");
+            return;
+            
+        } else if ((usname.equals("Admin") && pwd.equals("12345"))) {
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+            new ViewGiaoDienBanHang().setVisible(true);
+            this.dispose();
+            return;
+            
+        }
+        boolean check = loginService.check(usname, pwd);
+        
+        if(!check){
+            JOptionPane.showMessageDialog(this, "Sai tai khoan hoac mat khau");
+            return;
+        }
+        
+        loadData(loginService.getList(txtuser.getText(), txtpw.getText()));
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +255,10 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel panel_dangNhap;
     private javax.swing.JPanel panel_logo;
+    private javax.swing.JPasswordField txtpw;
+    private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
 
     private void setColor(JButton btnDangNhap) {

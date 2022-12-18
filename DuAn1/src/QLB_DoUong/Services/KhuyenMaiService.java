@@ -18,10 +18,14 @@ public interface KhuyenMaiService {
     public ArrayList<KhuyenMai> loc(Date ngayTao);
     public ArrayList<KhuyenMai> loc1(Date ngayTao);
     public boolean addNew(KhuyenMai khuyenMai);
-    public boolean update(KhuyenMai khuyenMai, String id);
+    public boolean update(KhuyenMai khuyenMai, String ma);
     public Boolean updateTinhTrang(KhuyenMai khuyenMai,Date ngayBatDau , Date ngayKetThuc);
-    public boolean delete(String id);
+    public boolean delete(String ma);
     public ArrayList<Date> ngayBatDau();
     public ArrayList<Date> ngayKetThuc();
-    public Boolean timKiem();
+    public ArrayList<KhuyenMai> timKiem(String ma);
+    public Boolean check(String ma);
+    public Boolean checkngay(Date ngaykt,Date ngaybd);
+    
+    
 }

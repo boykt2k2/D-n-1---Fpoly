@@ -52,10 +52,10 @@ public class BanRepository {
         return false;
     }
 
-    public Boolean xoa(String id) {
-        String query = "delete Ban where id= ?";
+    public Boolean xoa(String ma) {
+        String query = "delete Ban where MaBan= ?";
         try (Connection con = connection.getConnection(); PreparedStatement pr = con.prepareStatement(query)) {
-            pr.setObject(1, id);
+            pr.setObject(1, ma);
 
             pr.executeUpdate();
             return true;
@@ -65,14 +65,14 @@ public class BanRepository {
         return false;
     }
 
-    public Boolean sua(String id, Ban ban) {
-        String query = "update Ban set MaBan= ?,TenBan=?,TrangThai = ? where id =?";
+    public Boolean sua(String ma, Ban ban) {
+        String query = "update Ban set MaBan= ?,TenBan=?,TrangThai = ? where MaBan =?";
         try (Connection con = connection.getConnection(); PreparedStatement pr = con.prepareStatement(query)) {
 
             pr.setObject(2, ban.getTenBan());
             pr.setObject(1, ban.getMaBan());
             pr.setObject(3, ban.getTrangthai());
-            pr.setObject(4, id);
+            pr.setObject(4, ma);
             pr.executeUpdate();
             return true;
         } catch (Exception e) {

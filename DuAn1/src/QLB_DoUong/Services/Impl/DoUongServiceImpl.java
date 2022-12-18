@@ -17,6 +17,7 @@ import java.util.List;
  * @author THUONG DINH
  */
 public class DoUongServiceImpl implements DoUongService {
+
     private DoUongRepository doUongRepository = new DoUongRepository();
 
     @Override
@@ -42,5 +43,20 @@ public class DoUongServiceImpl implements DoUongService {
     @Override
     public List<DoUongVM> search(String kind, String txt) {
         return doUongRepository.search(kind, txt);
+    }
+
+    @Override
+    public Boolean check(String ma) {
+        return doUongRepository.check(ma);
+    }
+
+    @Override
+    public List<DoUongVM> getSearchTen(String ten) {
+        return doUongRepository.getSearchTen(ten);
+    }
+
+    @Override
+    public List<DoUongVM> getSearchMa(String ma) {
+        return doUongRepository.getSearchMa(ma);
     }
 }

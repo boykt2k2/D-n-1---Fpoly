@@ -100,4 +100,19 @@ public class SizeRepository {
         }
         return check > 0;
     }
+
+    public Boolean check(String ma) {
+ Boolean trangthai = true;
+        String sql = "select* from Size where MaSize = ?";
+        try (Connection con = DBConnection.getConnection();
+                PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setString(1, ma);
+            ResultSet rs = pst.executeQuery();
+            trangthai = rs.next();
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return trangthai;
+    }    
 }
