@@ -53,6 +53,6 @@ public class Size {
     }
 
     public Object[] toData() {
-        return new Object[]{id, maSize, tenSize};
+        return new Object[]{maSize, tenSize};
     }
 }

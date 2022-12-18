@@ -51,10 +51,10 @@ public class DanhmucRepository {
         return false;
     }
 
-    public Boolean xoa(String id) {
-        String query = "delete DanhMuc where id= ?";
+    public Boolean xoa(String ma) {
+        String query = "delete DanhMuc where MaDanhMuc= ?";
         try (Connection con = connection.getConnection(); PreparedStatement pr = con.prepareStatement(query)) {
-            pr.setObject(1, id);
+            pr.setObject(1, ma);
 
             pr.executeUpdate();
             return true;
@@ -64,13 +64,13 @@ public class DanhmucRepository {
         return false;
     }
 
-    public Boolean sua(String id, DanhMuc Danhmuc) {
-        String query = "update DanhMuc set MaDanhMuc= ?,TenDanhMuc=? where id =?";
+    public Boolean sua(String ma, DanhMuc Danhmuc) {
+        String query = "update DanhMuc set MaDanhMuc= ?,TenDanhMuc=? where MaDanhMuc =?";
         try (Connection con = connection.getConnection(); PreparedStatement pr = con.prepareStatement(query)) {
 
             pr.setObject(2, Danhmuc.getTenDanhMuc());
             pr.setObject(1, Danhmuc.getMaDanhMuc());
-            pr.setObject(3, id);
+            pr.setObject(3, ma);
             pr.executeUpdate();
             return true;
         } catch (Exception e) {

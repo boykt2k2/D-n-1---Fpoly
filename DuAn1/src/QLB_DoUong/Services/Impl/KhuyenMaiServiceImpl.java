@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * @author THUONG DINH
  */
 public class KhuyenMaiServiceImpl implements KhuyenMaiService {
+
     public KhuyenMaiRepository khuyenMaiRepository = new KhuyenMaiRepository();
 
     @Override
@@ -28,23 +29,18 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     }
 
     @Override
-    public boolean update(KhuyenMai khuyenMai, String id) {
-        return khuyenMaiRepository.update(khuyenMai,id);
+    public boolean update(KhuyenMai khuyenMai, String ma) {
+        return khuyenMaiRepository.update(khuyenMai, ma);
     }
 
     @Override
-    public boolean delete(String id) {
-        return khuyenMaiRepository.delete(id);
+    public boolean delete(String ma) {
+        return khuyenMaiRepository.delete(ma);
     }
 
     @Override
-    public Boolean timKiem() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Boolean updateTinhTrang(KhuyenMai khuyenMai,Date ngayBatDau, Date ngayKetThuc) {
-        return khuyenMaiRepository.updateTinhTrang(khuyenMai,ngayBatDau ,ngayKetThuc);
+    public Boolean updateTinhTrang(KhuyenMai khuyenMai, Date ngayBatDau, Date ngayKetThuc) {
+        return khuyenMaiRepository.updateTinhTrang(khuyenMai, ngayBatDau, ngayKetThuc);
     }
 
     @Override
@@ -67,8 +63,19 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
         return khuyenMaiRepository.loc1(ngayTao);
     }
 
-    
+    @Override
+    public Boolean check(String ma) {
+        return khuyenMaiRepository.check(ma);
+    }
 
-    
-    
+    @Override
+    public Boolean checkngay(Date ngaykt, Date ngaybd) {
+        return khuyenMaiRepository.check(ngaykt, ngaybd);
+    }
+
+    @Override
+    public ArrayList<KhuyenMai> timKiem(String ma) {
+        return khuyenMaiRepository.timkiem(ma);
+    }
+
 }

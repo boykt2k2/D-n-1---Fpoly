@@ -28,13 +28,13 @@ public class DanhmucImpl implements DanhmucSevice {
     }
 
     @Override
-    public Boolean Delete(String id) {
-        return danhmuc.xoa(id);
+    public Boolean Delete(String ma) {
+        return danhmuc.xoa(ma);
     }
 
     @Override
-    public Boolean Update(String id, DanhMuc Danhmuc) {
-        return danhmuc.sua(id, Danhmuc);
+    public Boolean Update(String ma, DanhMuc Danhmuc) {
+        return danhmuc.sua(ma, Danhmuc);
     }
 
     @Override

@@ -31,12 +31,13 @@ public class NhanVienRepository {
                 + "      ,[Sdt]\n"
                 + "      ,[TrangThai]\n"
                 + "      ,[MatKhau]\n"
+                + "      ,[ChucVu]\n"
                 + "  FROM [dbo].[NhanVien]\n"
-                + "  Order by MaNhanVien ASC";
+                + "   Order by MaNhanVien desc";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10));
+                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11));
                 listNhanVien.add(nv);
             }
         } catch (Exception e) {
@@ -45,33 +46,32 @@ public class NhanVienRepository {
         return listNhanVien;
     }
 
-    public List<NhanVien> getNV_NghiViec() {
-        List<NhanVien> listNhanVien = new ArrayList<>();
-        String sql = "SELECT [Id]\n"
-                + "      ,[MaNhanVien]\n"
-                + "      ,[TenNhanVien]\n"
-                + "      ,[Email]\n"
-                + "      ,[GioiTinh]\n"
-                + "      ,[NgaySinh]\n"
-                + "      ,[DiaChi]\n"
-                + "      ,[Sdt]\n"
-                + "      ,[TrangThai]\n"
-                + "      ,[MatKhau]\n"
-                + "  FROM [dbo].[NhanVien]\n"
-                + "  WHERE TrangThai = 0\n"
-                + "  Order by MaNhanVien ASC";
-        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10));
-                listNhanVien.add(nv);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return listNhanVien;
-    }
-
+//    public List<NhanVien> getNV_NghiViec() {
+//        List<NhanVien> listNhanVien = new ArrayList<>();
+//        String sql = "SELECT [Id]\n"
+//                + "      ,[MaNhanVien]\n"
+//                + "      ,[TenNhanVien]\n"
+//                + "      ,[Email]\n"
+//                + "      ,[GioiTinh]\n"
+//                + "      ,[NgaySinh]\n"
+//                + "      ,[DiaChi]\n"
+//                + "      ,[Sdt]\n"
+//                + "      ,[TrangThai]\n"
+//                + "      ,[MatKhau]\n"
+//                + "  FROM [dbo].[NhanVien]\n"
+//                + "  WHERE TrangThai = 0\n"
+//                + "  Order by MaNhanVien ASC";
+//        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10));
+//                listNhanVien.add(nv);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return listNhanVien;
+//    }
     public List<NhanVien> search(String maNV) {
         List<NhanVien> listNhanVien = new ArrayList<>();
         String sql = "SELECT [Id]\n"
@@ -84,13 +84,14 @@ public class NhanVienRepository {
                 + "      ,[Sdt]\n"
                 + "      ,[TrangThai]\n"
                 + "      ,[MatKhau]\n"
+                + "      ,[ChucVu]\n"
                 + "  FROM [dbo].[NhanVien]\n"
-                + "  WHERE MaNhanVien = ?";
+                + "where MaNhanVien like ?";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, maNV);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10));
+                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11));
                 listNhanVien.add(nv);
             }
         } catch (Exception e) {
@@ -111,13 +112,14 @@ public class NhanVienRepository {
                 + "      ,[Sdt]\n"
                 + "      ,[TrangThai]\n"
                 + "      ,[MatKhau]\n"
+                + "      ,[ChucVu]\n"
                 + "  FROM [dbo].[NhanVien]\n"
-                + "  WHERE DiaChi = ?";
+                + "where DiaChi like ?";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, diaChi);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10));
+                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11));
                 listNhanVien.add(nv);
             }
         } catch (Exception e) {
@@ -138,13 +140,14 @@ public class NhanVienRepository {
                 + "      ,[Sdt]\n"
                 + "      ,[TrangThai]\n"
                 + "      ,[MatKhau]\n"
+                + "      ,[ChucVu]\n"
                 + "  FROM [dbo].[NhanVien]\n"
-                + "  WHERE GioiTinh = ?";
+                + "where GioiTinh like ?";
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, gioiTinh);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10));
+                NhanVien nv = new NhanVien(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getDate(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getString(10), rs.getInt(11));
                 listNhanVien.add(nv);
             }
         } catch (Exception e) {
@@ -155,7 +158,8 @@ public class NhanVienRepository {
 
     public boolean add(NhanVien nhanVien) {
         String query = "INSERT INTO [dbo].[NhanVien]\n"
-                + "           ([MaNhanVien]\n"
+                + "           (\n"
+                + "           [MaNhanVien]\n"
                 + "           ,[TenNhanVien]\n"
                 + "           ,[Email]\n"
                 + "           ,[GioiTinh]\n"
@@ -163,8 +167,10 @@ public class NhanVienRepository {
                 + "           ,[DiaChi]\n"
                 + "           ,[Sdt]\n"
                 + "           ,[TrangThai]\n"
-                + "           ,[MatKhau])\n"
-                + "     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "           ,[MatKhau]\n"
+                + "           ,[ChucVu])\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?,?,?,?)";
         int check = 0;
         try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query);) {
             ps.setObject(1, nhanVien.getMaNhanVien());
@@ -176,6 +182,7 @@ public class NhanVienRepository {
             ps.setObject(7, nhanVien.getSdt());
             ps.setObject(8, nhanVien.getTrangThai());
             ps.setObject(9, nhanVien.getMatKhau());
+            ps.setObject(10, nhanVien.getChucVu());
             check = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(System.out);
@@ -235,5 +242,23 @@ public class NhanVienRepository {
 //        NhanVien nv = new NhanVien("NV04", "Lý Thị Thu Hương", "huong@gmail.com", 0, null, "Bắc Giang", "0998822234", 1, "123");
 //        boolean add = new NhanVienRepository().add(nv);
 //        System.out.println(add);
+    }
+
+    public String checkTrung(String maNV) {
+        
+        String query = "SELECT MaNhanVien FROM NhanVien WHERE MaNhanVien = ?";
+        String text = null;
+        try ( Connection con = DBConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query);) {
+            ps.setObject(1, maNV);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                text = rs.getString(1);
+            }
+            return text;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    
     }
 }

@@ -34,9 +34,12 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
     public FormQuanLyNhanVien() {
         initComponents();
         txtID.setEnabled(false);
-        txtMaNV.setEnabled(false);
+        
         lblGioiTinh.setForeground(Color.red);
+        radio();
+        radio2();
         showData(nhanVienService.getAll());
+        
     }
 
     private void showData(List<NhanVien> listNhanVien) {
@@ -52,14 +55,65 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
         txtMaNV.setText("");
         txtTenNV.setText("");
         txtEmail.setText("");
-        rdoNam.setSelected(false);
-        rdoNu.setSelected(false);
         txtNgaySinh.setText("");
         txtDiaChi.setText("");
         txtSDT.setText("");
-        rdoDangLamViec.setSelected(false);
-        rdoNghiViec.setSelected(false);
         txtMatKhau.setText("");
+        buttonGroup1.clearSelection();
+        buttonGroup2.clearSelection();
+    }
+    
+    private void radio() {
+        buttonGroup2.add(rdoNam);
+        buttonGroup2.add(rdoNu);
+    }
+
+    private void radio2() {
+        buttonGroup1.add(rdoDangLamViec);
+        buttonGroup1.add(rdoNghiViec);
+    }
+    private boolean check() {
+        if (txtMaNV.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Mã nhân viên không được để trống");
+            return false;
+        } else if (!txtMaNV.getText().matches("^[N]{1}[V]{1}\\d+")) {
+            JOptionPane.showMessageDialog(this, "Sai định dạng Mã (VD: NV001)");
+            return false;
+        } else if (txtTenNV.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Tên nhân viên không được để trống");
+            return false;
+        } else if (txtTenNV.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Tên nhân viên phải là chữ");
+            return false;
+        } else if (txtEmail.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Email không được để trống");
+            return false;
+        } else if (!(txtEmail.getText()).matches("^(.+)@(\\S+)$")) {
+            JOptionPane.showMessageDialog(this, "Sai định dạng Email");
+            return false;
+        } else if (!rdoNam.isSelected() && !rdoNu.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn giới tính");
+            return false;
+        } else if (txtNgaySinh.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Ngày sinh không được để trống");
+            return false;
+        } else if (txtDiaChi.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Địa chỉ không được để trống");
+            return false;
+        } else if (txtMatKhau.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu không được để trống");
+            return false;
+        } else if (!rdoDangLamViec.isSelected() && !rdoNghiViec.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn trạng thái");
+            return false;
+        } else if (txtSDT.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không được để trống");
+            return false;
+        } else if (!txtSDT.getText().matches("0\\d{9}")) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không đúng định dạng");
+            return false;
+        } 
+        return true;
     }
 
     /**
@@ -78,16 +132,10 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
         txtLocDiaChi = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         cboLocGioiTinh = new javax.swing.JComboBox<>();
-        btnLocGioiTinh = new javax.swing.JButton();
-        btnLocDiaChi = new javax.swing.JButton();
         lblGioiTinh = new javax.swing.JLabel();
-        btnShowData = new javax.swing.JButton();
-        btnShowData2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         txtTimMa = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        btnTimKiem = new javax.swing.JButton();
-        btnShowData3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -128,45 +176,30 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
 
         jLabel11.setText("Lọc theo địa chỉ:");
 
-        jLabel12.setText("Lọc theo giới tính:");
-
-        cboLocGioiTinh.setBackground(new java.awt.Color(228, 245, 194));
-        cboLocGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "0" }));
-
-        btnLocGioiTinh.setBackground(new java.awt.Color(228, 245, 194));
-        btnLocGioiTinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/timKiem.png"))); // NOI18N
-        btnLocGioiTinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLocGioiTinhActionPerformed(evt);
+        txtLocDiaChi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLocDiaChiKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtLocDiaChiKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLocDiaChiKeyTyped(evt);
             }
         });
 
-        btnLocDiaChi.setBackground(new java.awt.Color(228, 245, 194));
-        btnLocDiaChi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/timKiem.png"))); // NOI18N
-        btnLocDiaChi.addActionListener(new java.awt.event.ActionListener() {
+        jLabel12.setText("Lọc theo giới tính:");
+
+        cboLocGioiTinh.setBackground(new java.awt.Color(228, 245, 194));
+        cboLocGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "1", "0" }));
+        cboLocGioiTinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLocDiaChiActionPerformed(evt);
+                cboLocGioiTinhActionPerformed(evt);
             }
         });
 
         lblGioiTinh.setBackground(new java.awt.Color(204, 0, 0));
         lblGioiTinh.setText("(1: Nam, 0: Nữ)");
-
-        btnShowData.setBackground(new java.awt.Color(0, 204, 51));
-        btnShowData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/quayLai.png"))); // NOI18N
-        btnShowData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowDataActionPerformed(evt);
-            }
-        });
-
-        btnShowData2.setBackground(new java.awt.Color(0, 204, 51));
-        btnShowData2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/quayLai.png"))); // NOI18N
-        btnShowData2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowData2ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -176,25 +209,15 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtLocDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLocDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLocDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblGioiTinh))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(cboLocGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLocGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowData2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25))
+                    .addComponent(cboLocGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(100, 100, 100))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,12 +229,8 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(cboLocGioiTinh)
-                    .addComponent(btnLocGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnLocDiaChi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(txtLocDiaChi)
-                    .addComponent(btnShowData2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(txtLocDiaChi))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -228,24 +247,19 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
                 txtTimMaActionPerformed(evt);
             }
         });
+        txtTimMa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimMaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimMaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTimMaKeyTyped(evt);
+            }
+        });
 
         jLabel13.setText("Tìm theo mã:");
-
-        btnTimKiem.setBackground(new java.awt.Color(228, 245, 194));
-        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/timKiem.png"))); // NOI18N
-        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemActionPerformed(evt);
-            }
-        });
-
-        btnShowData3.setBackground(new java.awt.Color(0, 204, 51));
-        btnShowData3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QLB_DoUong/IMG/quayLai.png"))); // NOI18N
-        btnShowData3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowData3ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -255,23 +269,15 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtTimMa, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowData3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(txtTimMa, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(txtTimMa)
-                    .addComponent(btnShowData3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(txtTimMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
         );
 
@@ -586,26 +592,31 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+           if (check()) {
             NhanVien nv = new NhanVien();
-            for (int i = 0; i < 1; i++) {
-            int random = ThreadLocalRandom.current().nextInt(1, 100);
-            nv.setMaNhanVien("NV"+random);
-            }
+            String ma = txtMaNV.getText();
+            nv.setMaNhanVien(txtMaNV.getText());
             nv.setTenNhanVien(txtTenNV.getText());
             nv.setEmail(txtEmail.getText());
             nv.setGioiTinh(rdoNam.isSelected() ? 0 : 1);
-            nv.setNgaySinh(Date.valueOf(txtNgaySinh.getText()));
+            nv.setNgaySinh(java.sql.Date.valueOf(txtNgaySinh.getText()));
             nv.setDiaChi(txtDiaChi.getText());
             nv.setSdt(txtSDT.getText());
             nv.setTrangThai(rdoDangLamViec.isSelected() ? 1 : 0);
             nv.setMatKhau(String.valueOf(txtMatKhau.getPassword()));
-//            
-//            if(txtMaNV.getText().equals("") || txtTenNV.getText().equals("")){
-//                JOptionPane.showMessageDialog(this, "Không được null");
-//                return;
-//            }
-            JOptionPane.showMessageDialog(this, nhanVienService.add(nv));
-            showData(nhanVienService.getAll());
+            nv.setChucVu(1);
+            String checkTrung = nhanVienService.checkTrung(ma);
+            if (checkTrung != null) {
+                JOptionPane.showMessageDialog(this, "Trùng mã");
+                return;
+            }
+            int i = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn thêm nhân viên này?", "Quản lý nhân viên", JOptionPane.YES_NO_OPTION);
+            if (i == 0) {
+                JOptionPane.showMessageDialog(this, nhanVienService.add(nv));
+                showData(nhanVienService.getAll());
+            }
+
+        }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -666,42 +677,6 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtTimMaFocusLost
 
-    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here:
-        String maNV = txtTimMa.getText();
-        List<NhanVien> listNhanVien = nhanVienService.search(maNV);
-        showData(listNhanVien);
-    }//GEN-LAST:event_btnTimKiemActionPerformed
-
-    private void btnLocDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocDiaChiActionPerformed
-        // TODO add your handling code here:
-        String diaChi = txtLocDiaChi.getText();
-        List<NhanVien> listNhanVien = nhanVienService.searchDiaChi(diaChi);
-        showData(listNhanVien);
-    }//GEN-LAST:event_btnLocDiaChiActionPerformed
-
-    private void btnLocGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocGioiTinhActionPerformed
-        // TODO add your handling code here:
-        String gioiTinh = cboLocGioiTinh.getSelectedItem().toString();
-        List<NhanVien> listNhanVien = nhanVienService.searchGioiTinh(gioiTinh);
-        showData(listNhanVien);
-    }//GEN-LAST:event_btnLocGioiTinhActionPerformed
-
-    private void btnShowDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDataActionPerformed
-        // TODO add your handling code here:
-        showData(nhanVienService.getAll());
-    }//GEN-LAST:event_btnShowDataActionPerformed
-
-    private void btnShowData2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowData2ActionPerformed
-        // TODO add your handling code here:
-        showData(nhanVienService.getAll());
-    }//GEN-LAST:event_btnShowData2ActionPerformed
-
-    private void btnShowData3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowData3ActionPerformed
-        // TODO add your handling code here:
-        showData(nhanVienService.getAll());
-    }//GEN-LAST:event_btnShowData3ActionPerformed
-
     private void tblDS_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDS_NhanVienMouseClicked
         // TODO add your handling code here:
         int row = tblDS_NhanVien.getSelectedRow();
@@ -728,17 +703,68 @@ public class FormQuanLyNhanVien extends javax.swing.JPanel {
         txtMatKhau.setText(tblDS_NhanVien.getValueAt(row, 9).toString());
     }//GEN-LAST:event_tblDS_NhanVienMouseClicked
 
+    private void txtTimMaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimMaKeyPressed
+        String maNV = "%" + txtTimMa.getText() + "%";
+        List<NhanVien> listNhanVien2 = nhanVienService.search(maNV);
+        showData(listNhanVien2);
+
+    }//GEN-LAST:event_txtTimMaKeyPressed
+
+    private void txtTimMaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimMaKeyReleased
+        // TODO add your handling code here:
+        String maNV = "%" + txtTimMa.getText() + "%";
+        List<NhanVien> listNhanVien2 = nhanVienService.search(maNV);
+        showData(listNhanVien2);
+
+    }//GEN-LAST:event_txtTimMaKeyReleased
+
+    private void txtTimMaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimMaKeyTyped
+        // TODO add your handling code here:
+        String maNV = "%" + txtTimMa.getText() + "%";
+        List<NhanVien> listNhanVien2 = nhanVienService.search(maNV);
+        showData(listNhanVien2);
+
+    }//GEN-LAST:event_txtTimMaKeyTyped
+
+    private void cboLocGioiTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocGioiTinhActionPerformed
+        // TODO add your handling code here:
+        int gioiTinh = cboLocGioiTinh.getSelectedIndex();
+        if (gioiTinh > 0) {
+            String gioiTinh1 = (String) cboLocGioiTinh.getSelectedItem();
+            List<NhanVien> list = nhanVienService.searchGioiTinh(gioiTinh1);
+            showData(list);
+        } else {
+            List<NhanVien> list1 = nhanVienService.getAll();
+            showData(list1);
+        }
+    }//GEN-LAST:event_cboLocGioiTinhActionPerformed
+
+    private void txtLocDiaChiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocDiaChiKeyPressed
+        // TODO add your handling code here:
+        String diaChi = "%" + txtLocDiaChi.getText() + "%";
+        List<NhanVien> listNhanVien1 = nhanVienService.searchDiaChi(diaChi);
+        showData(listNhanVien1);
+    }//GEN-LAST:event_txtLocDiaChiKeyPressed
+
+    private void txtLocDiaChiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocDiaChiKeyReleased
+        // TODO add your handling code here:
+        String diaChi = "%" + txtLocDiaChi.getText() + "%";
+        List<NhanVien> listNhanVien1 = nhanVienService.searchDiaChi(diaChi);
+        showData(listNhanVien1);
+    }//GEN-LAST:event_txtLocDiaChiKeyReleased
+
+    private void txtLocDiaChiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLocDiaChiKeyTyped
+        // TODO add your handling code here:
+        String diaChi = "%" + txtLocDiaChi.getText() + "%";
+        List<NhanVien> listNhanVien1 = nhanVienService.searchDiaChi(diaChi);
+        showData(listNhanVien1);
+    }//GEN-LAST:event_txtLocDiaChiKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLocDiaChi;
-    private javax.swing.JButton btnLocGioiTinh;
     private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnShowData;
-    private javax.swing.JButton btnShowData2;
-    private javax.swing.JButton btnShowData3;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

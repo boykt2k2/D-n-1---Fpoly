@@ -67,4 +67,9 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.searchGioiTinh(gioiTinh);
     }
 
+    @Override
+    public String checkTrung(String maNV) {
+        return nhanVienRepository.checkTrung(maNV);
+    }
+
 }

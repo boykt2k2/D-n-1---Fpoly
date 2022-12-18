@@ -22,4 +22,5 @@ public interface SizeService {
     String delete(String ma);
 
     List<Size> search(String ma);
+    Boolean check(String ma);
 }

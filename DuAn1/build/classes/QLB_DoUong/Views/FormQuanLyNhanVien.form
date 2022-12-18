@@ -82,30 +82,18 @@
                   <EmptySpace min="42" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtLocDiaChi" min="-2" pref="241" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnLocDiaChi" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnShowData" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtLocDiaChi" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="201" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblGioiTinh" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="cboLocGioiTinh" min="-2" pref="241" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnLocGioiTinh" min="-2" pref="36" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnShowData2" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cboLocGioiTinh" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -121,12 +109,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnShowData" pref="0" max="32767" attributes="0"/>
                       <Component id="cboLocGioiTinh" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnLocGioiTinh" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnLocDiaChi" alignment="1" pref="0" max="32767" attributes="0"/>
                       <Component id="txtLocDiaChi" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnShowData2" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
@@ -140,6 +124,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtLocDiaChi">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLocDiaChiKeyPressed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLocDiaChiKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLocDiaChiKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -152,41 +141,19 @@
               <Color blue="c2" green="f5" red="e4" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="1"/>
-                <StringItem index="1" value="0"/>
+              <StringArray count="3">
+                <StringItem index="0" value="All"/>
+                <StringItem index="1" value="1"/>
+                <StringItem index="2" value="0"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLocGioiTinhActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnLocGioiTinh">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c2" green="f5" red="e4" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/QLB_DoUong/IMG/timKiem.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLocGioiTinhActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnLocDiaChi">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c2" green="f5" red="e4" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/QLB_DoUong/IMG/timKiem.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLocDiaChiActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblGioiTinh">
           <Properties>
@@ -195,32 +162,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="(1: Nam, 0: N&#x1eef;)"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnShowData">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="cc" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/QLB_DoUong/IMG/quayLai.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowDataActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnShowData2">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="cc" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/QLB_DoUong/IMG/quayLai.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowData2ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -245,15 +186,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="txtTimMa" min="-2" pref="214" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnTimKiem" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnShowData3" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtTimMa" min="-2" pref="214" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="91" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -262,11 +197,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="13" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnTimKiem" pref="0" max="32767" attributes="0"/>
-                      <Component id="txtTimMa" max="32767" attributes="0"/>
-                      <Component id="btnShowData3" alignment="1" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="txtTimMa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -277,38 +208,15 @@
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTimMaFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimMaActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimMaKeyPressed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimMaKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimMaKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="text" type="java.lang.String" value="T&#xec;m theo m&#xe3;:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnTimKiem">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="c2" green="f5" red="e4" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/QLB_DoUong/IMG/timKiem.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiemActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnShowData3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="cc" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/QLB_DoUong/IMG/quayLai.png"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowData3ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
